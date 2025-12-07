@@ -21,6 +21,8 @@ int KNN::predict(const TimeSeriesDataset& trainData,
             d = trainData.euclidian_distance(s, query);
         } else if (similarity_measure == "dtw") {
             d = trainData.dtw_distance(s, query);
+        } else if (similarity_measure == "edr") {
+            d = trainData.edr_distance(s, query);
         } else {
             d = trainData.euclidian_distance(s, query);
         }

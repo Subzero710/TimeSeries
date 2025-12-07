@@ -29,6 +29,8 @@ public:
     double euclidian_distance(const vector<double>& a, const vector<double>& b) const;
 
     double dtw_distance(const vector<double>& a, const vector<double>& b) const;
+
+    double edr_distance(const vector<double>& a, const vector<double>& b) const;
 };
 
 #endif // TP2CPP_TIMESERIESDATASET_H

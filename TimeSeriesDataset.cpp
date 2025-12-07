@@ -136,3 +136,41 @@ double TimeSeriesDataset::dtw_distance(const vector<double>& a,
 
     return sqrt(D[n][m]);
 }
+
+double TimeSeriesDataset::edr_distance(const vector<double>& a,
+                                       const vector<double>& b) const {
+    int n = (int)a.size();
+    int m = (int)b.size();
+
+    const double EPS = 0.5;
+
+    vector< vector<int> > D(n + 1, vector<int>(m + 1, 0));
+
+    for (int i = 0; i <= n; ++i) {
+        D[i][0] = i;
+    }
+    for (int j = 0; j <= m; ++j) {
+        D[0][j] = j;
+    }
+
+    for (int i = 1; i <= n; ++i) {
+        for (int j = 1; j <= m; ++j) {
+            double diff = fabs(a[i - 1] - b[j - 1]);
+
+
+            int subCost = (diff <= EPS) ? 0 : 1;
+
+            int costSub  = D[i - 1][j - 1] + subCost;
+            int costDel  = D[i - 1][j] + 1;
+            int costIns  = D[i][j - 1] + 1;
+
+            int best = costSub;
+            if (costDel < best) best = costDel;
+            if (costIns < best) best = costIns;
+
+            D[i][j] = best;
+        }
+    }
+
+    return (double)D[n][m];
+}

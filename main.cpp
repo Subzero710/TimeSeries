@@ -47,5 +47,8 @@ int main() {
     KNN knn3(3, "euclidean_distance");
     cout << "k=3, euclidean: " << knn3.evaluate(trainData, testData, ground_truth) << endl;
 
+    KNN knn4(1, "edr");
+    cout << "k=1, EDR: " << knn4.evaluate(trainData, testData, ground_truth) << endl;
+
     return 0;
 }
