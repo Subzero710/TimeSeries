@@ -12,4 +12,6 @@ add_executable(TP2cpp main.cpp
         headers/StepGenerator.h
         SinWaweGenerator.cpp
         TimeSeriesDataset.cpp
-        headers/TimeSeriesDataset.h)
+        headers/TimeSeriesDataset.h
+        KNN.cpp
+        headers/KNN.h)
